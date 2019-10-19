@@ -26,11 +26,11 @@ public class Code05MergeSort {
         }
         // 假设为[1,2,3,4]
         int mid = (l + r) / 2;
-        // 最后一个是
-        // l=0 mid=0  2
+        // 先执行这(数组左边)到最后一个
         mergeSort(arr, l, mid);
-        // mid+1=1,r=1 3
+        // 再以上一条最后一个的条件执行这条, 分数组的右边
         mergeSort(arr, mid + 1, r);
+        // 再执行这条, 合并, 之后读取栈中上一条左边的, 带入l r 等, 执行右边的, 能合并的就继续合并, 合并不了后再分
         merge(arr, l, mid, mid + 1, r);
     }
 
