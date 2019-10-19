@@ -2,24 +2,29 @@ package class01.my;
 
 import java.util.Arrays;
 
+
 /**
  * 沉石法(冒泡法变体).
+ *
+ * 详情可见
+ * https://blog.csdn.net/qq_20011607/article/details/82350462
+ *
  * 思路:
- *      从左往右, 两两比较, 大的右移
+ *      从左往右, 依次两两比较, 大的右移
  * 复杂度:
  *      最坏时间 O(n^2)
  *      最优时间 O(n^2)
  *      平均时间 O(n^2)
  *
  *      最坏空间 共O(n), 辅助空间O(1)
- * <p>
+ *
  * When I wrote this, only God and I understood what I was doing
  * Now, God only knows
  *
  * @author RichardLee
  * @version v1.0
  */
-public class BubbleSort {
+public class Code01BubbleSort {
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -40,11 +45,13 @@ public class BubbleSort {
 
     }
 
+
     public static void swap(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
+
 
     // for test
     public static void comparator(int[] arr) {
