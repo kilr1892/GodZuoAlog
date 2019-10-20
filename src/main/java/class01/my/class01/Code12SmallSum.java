@@ -1,61 +1,73 @@
-package class01.my;
-
-import java.util.Arrays;
-
+package class01.my.class01;
 
 /**
- * 沉石法(冒泡法变体).
- *
- * 详情可见
- * https://blog.csdn.net/qq_20011607/article/details/82350462
- *
- * 思路:
- *      从左往右, 依次两两比较, 大的右移
- * 复杂度:
- *      最坏时间 O(n^2)
- *      最优时间 O(n^2)
- *      平均时间 O(n^2)
- *
- *      最坏空间 共O(n), 辅助空间O(1)
- *
+ * .
  * When I wrote this, only God and I understood what I was doing
  * Now, God only knows
  *
  * @author RichardLee
  * @version v1.0
  */
-public class Code01BubbleSort {
-    public static void bubbleSort(int[] arr) {
+public class Code12SmallSum {
+    public static int smallSum(int[] arr) {
         if (arr == null || arr.length < 2) {
-            return;
+            return 0;
         }
+        return mergeSort(arr, 0, arr.length - 1);
+    }
 
-        // 依次两两比较 大的右移 沉石法
-        for (int i = arr.length - 1; i > 0; i--) {
-            // i 控制最后那个需要排序的位置
-            // 比如a[3,1,5] i要从2 开始, 等于1停止, 即小于i
-            for (int j = 0; j < i; j++) {
-                // j 控制从头一直比较到i
-                // j 从0开始, 一直到i-1为止, 因为要和j+1比
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
-                }
+    public static int mergeSort(int[] arr, int l, int r) {
+        // 返回条件
+        if (l == r) {
+            return 0;
+        }
+        int mid = l + ((r - l) >> 1);
+        // 递归式
+        return mergeSort(arr, l, mid) + mergeSort(arr, mid + 1, r) + merge(arr, l, mid, r);
+    }
+
+    private static int merge(int[] arr, int l, int mid, int r) {
+        int[] helpArr = new int[r - l + 1];
+        int i = 0;
+        int p1 = l;
+        int p2 = mid + 1;
+        int sum = 0;
+
+        while (p1 <= mid && p2 <= r) {
+            if (arr[p1] < arr[p2]) {
+                sum += arr[p1] * (r - p2 + 1);
+                helpArr[i++] = arr[p1++];
+            } else {
+                helpArr[i++] = arr[p2++];
             }
         }
 
-    }
-
-
-    public static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
+        while (p1 <= mid) {
+            helpArr[i++] = arr[p1++];
+        }
+        while (p2 <= r) {
+            helpArr[i++] = arr[p2++];
+        }
+        for (i = 0; i < helpArr.length; i++) {
+            // l + i 和我写的 l++ 应该是一样的
+            arr[l + i] = helpArr[i];
+        }
+        return sum;
     }
 
 
     // for test
-    public static void comparator(int[] arr) {
-        Arrays.sort(arr);
+    public static int comparator(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return 0;
+        }
+        int res = 0;
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 0; j < i; j++) {
+                res += arr[j] < arr[i] ? arr[j] : 0;
+            }
+        }
+        return res;
     }
 
     // for test
@@ -118,18 +130,15 @@ public class Code01BubbleSort {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
-            bubbleSort(arr1);
-            comparator(arr2);
-            if (!isEqual(arr1, arr2)) {
+            if (smallSum(arr1) != comparator(arr2)) {
                 succeed = false;
+                printArray(arr1);
+                printArray(arr2);
                 break;
             }
         }
         System.out.println(succeed ? "Nice!" : "Fucking fucked!");
-
-        int[] arr = generateRandomArray(maxSize, maxValue);
-        printArray(arr);
-        bubbleSort(arr);
-        printArray(arr);
     }
+
+
 }
