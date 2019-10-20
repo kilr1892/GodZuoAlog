@@ -85,8 +85,8 @@ public class Code08NetherlandsFlag {
     }
 
     public static void main(String[] args) {
-        int[] test = generateArray();
-
+//        int[] test = generateArray();
+        int[] test = new int[]{4, 2, 6, 5, 4};
         printArray(test);
         int[] res = partition(test, 0, test.length - 1, 1);
 //        int[] res = partition(test);
