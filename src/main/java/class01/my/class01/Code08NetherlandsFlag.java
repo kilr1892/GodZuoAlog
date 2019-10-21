@@ -1,4 +1,4 @@
-package class01.my.class02;
+package class01.my.class01;
 
 /**
  * .
