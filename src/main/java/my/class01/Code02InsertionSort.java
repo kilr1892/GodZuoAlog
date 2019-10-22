@@ -1,55 +1,54 @@
-package class01.my.class01;
+package my.class01;
 
 import java.util.Arrays;
 
-
 /**
- * 沉石法(冒泡法变体).
- *
- * 详情可见
- * https://blog.csdn.net/qq_20011607/article/details/82350462
- *
+ * 选择排序.
+ * <p>
+ * 图解:
+ * https://visualgo.net/zh/sorting
+ * <p>
  * 思路:
- *      从左往右, 依次两两比较, 大的右移
+ * 1. 把第一个没有排序过的元素设置为最小值
+ * 2. 遍历每个没有排序过的元素
+ *       如果元素 < 现在的最小值
+ *       将此元素设置成为新的最小值
+ * 3. 将最小值和第一个没有排序过的位置交换
+ * <p>
  * 复杂度:
- *      最坏时间 O(n^2)
- *      最优时间 O(n^2)
- *      平均时间 O(n^2)
- *
- *      最坏空间 共O(n), 辅助空间O(1)
- *
+ * 时间 O(n^2)
+ * 空间 O(1)
  * When I wrote this, only God and I understood what I was doing
  * Now, God only knows
  *
  * @author RichardLee
  * @version v1.0
  */
-public class Code01BubbleSort {
-    public static void bubbleSort(int[] arr) {
+public class Code02InsertionSort {
+
+    public static void insertionSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
 
-        // 依次两两比较 大的右移 沉石法
-        for (int i = arr.length - 1; i > 0; i--) {
-            // i 控制最后那个需要排序的位置
-            // 比如a[3,1,5] i要从2 开始, 等于1停止, 即小于i
-            for (int j = 0; j < i; j++) {
-                // j 控制从头一直比较到i
-                // j 从0开始, 一直到i-1为止, 因为要和j+1比
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = arr[i];
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (min > arr[j]) {
+                    min = arr[j];
+                    minIndex = j;
                 }
             }
+            swap(arr, i, minIndex);
         }
-
     }
 
 
     public static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
 
@@ -118,10 +117,12 @@ public class Code01BubbleSort {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
-            bubbleSort(arr1);
+            insertionSort(arr1);
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {
                 succeed = false;
+                printArray(arr1);
+                printArray(arr2);
                 break;
             }
         }
@@ -129,7 +130,7 @@ public class Code01BubbleSort {
 
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
-        bubbleSort(arr);
+        insertionSort(arr);
         printArray(arr);
     }
 }
