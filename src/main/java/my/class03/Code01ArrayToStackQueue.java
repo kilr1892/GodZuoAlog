@@ -51,7 +51,7 @@ public class Code01ArrayToStackQueue {
     }
 
     public static class ArrayQueue {
-        // TODO 数组实现队列
+        // 数组实现队列
         // 队列的特点: 先进先出
         // 三个指针, 其中一个是用于确认队列中元素大小
         // 这样就可以不用去考虑指针的情况
