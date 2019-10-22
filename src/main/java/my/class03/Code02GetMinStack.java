@@ -20,22 +20,22 @@ public class Code02GetMinStack {
     // 3. 并与另一个栈的栈顶比较
     // 5. 小的话就存这个, 大的话就继续存栈顶
     //    多存一次 是为了弹栈的时候方便
-    public class MyStack1 {
+    public static class MyStack1 {
         Stack<Integer> dataStack = new Stack<>();
         Stack<Integer> minStack = new Stack<>();
 
         public void push(int newNum) {
 
-            dataStack.push(newNum);
             if (dataStack.empty()) {
                 minStack.push(newNum);
             } else {
                 newNum = newNum < minStack.peek() ? newNum : minStack.peek();
                 minStack.push(newNum);
             }
+            dataStack.push(newNum);
         }
 
-        public int getMin() {
+        public int getmin() {
             return minStack.peek();
         }
 
@@ -47,5 +47,18 @@ public class Code02GetMinStack {
             minStack.pop();
             return pop;
         }
+    }
+
+    public static void main(String[] args) {
+        MyStack1 stack1 = new MyStack1();
+        stack1.push(3);
+        System.out.println(stack1.getmin());
+        stack1.push(4);
+        System.out.println(stack1.getmin());
+        stack1.push(1);
+        System.out.println(stack1.getmin());
+        System.out.println(stack1.pop());
+        System.out.println(stack1.getmin());
+
     }
 }
