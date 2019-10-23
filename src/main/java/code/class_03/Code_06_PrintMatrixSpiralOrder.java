@@ -2,51 +2,51 @@ package code.class_03;
 
 public class Code_06_PrintMatrixSpiralOrder {
 
-	public static void spiralOrderPrint(int[][] matrix) {
-		int tR = 0;
-		int tC = 0;
-		int dR = matrix.length - 1;
-		int dC = matrix[0].length - 1;
-		while (tR <= dR && tC <= dC) {
-			printEdge(matrix, tR++, tC++, dR--, dC--);
+	public static void spiralOrderPrint(int[][] matXix) {
+		int tX = 0;
+		int tY = 0;
+		int dX = matXix.length - 1;
+		int dY = matXix[0].length - 1;
+		while (tX <= dX && tY <= dY) {
+			printEdge(matXix, tX++, tY++, dX--, dY--);
 		}
 	}
 
-	public static void printEdge(int[][] m, int tR, int tC, int dR, int dC) {
-		if (tR == dR) {
-			for (int i = tC; i <= dC; i++) {
-				System.out.print(m[tR][i] + " ");
+	public static void printEdge(int[][] m, int tX, int tY, int dX, int dY) {
+		if (tX == dX) {
+			for (int i = tY; i <= dY; i++) {
+				System.out.print(m[tX][i] + " ");
 			}
-		} else if (tC == dC) {
-			for (int i = tR; i <= dR; i++) {
-				System.out.print(m[i][tC] + " ");
+		} else if (tY == dY) {
+			for (int i = tX; i <= dX; i++) {
+				System.out.print(m[i][tY] + " ");
 			}
 		} else {
-			int curC = tC;
-			int curR = tR;
-			while (curC != dC) {
-				System.out.print(m[tR][curC] + " ");
+			int curC = tY;
+			int curR = tX;
+			while (curC != dY) {
+				System.out.print(m[tX][curC] + " ");
 				curC++;
 			}
-			while (curR != dR) {
-				System.out.print(m[curR][dC] + " ");
+			while (curR != dX) {
+				System.out.print(m[curR][dY] + " ");
 				curR++;
 			}
-			while (curC != tC) {
-				System.out.print(m[dR][curC] + " ");
+			while (curC != tY) {
+				System.out.print(m[dX][curC] + " ");
 				curC--;
 			}
-			while (curR != tR) {
-				System.out.print(m[curR][tC] + " ");
+			while (curR != tX) {
+				System.out.print(m[curR][tY] + " ");
 				curR--;
 			}
 		}
 	}
 
 	public static void main(String[] args) {
-		int[][] matrix = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 },
+		int[][] matXix = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 },
 				{ 13, 14, 15, 16 } };
-		spiralOrderPrint(matrix);
+		spiralOrderPrint(matXix);
 
 	}
 
