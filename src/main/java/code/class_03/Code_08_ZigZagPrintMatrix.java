@@ -3,19 +3,19 @@ package code.class_03;
 public class Code_08_ZigZagPrintMatrix {
 
 	public static void printMatrixZigZag(int[][] matrix) {
-		int tR = 0;
-		int tC = 0;
-		int dR = 0;
-		int dC = 0;
-		int endR = matrix.length - 1;
-		int endC = matrix[0].length - 1;
+		int tX = 0;
+		int tY = 0;
+		int dX = 0;
+		int dY = 0;
+		int endX = matrix.length - 1;
+		int endY = matrix[0].length - 1;
 		boolean fromUp = false;
-		while (tR != endR + 1) {
-			printLevel(matrix, tR, tC, dR, dC, fromUp);
-			tR = tC == endC ? tR + 1 : tR;
-			tC = tC == endC ? tC : tC + 1;
-			dC = dR == endR ? dC + 1 : dC;
-			dR = dR == endR ? dR : dR + 1;
+		while (tX != endX + 1) {
+			printLevel(matrix, tX, tY, dX, dY, fromUp);
+			tX = tY == endY ? tX + 1 : tX;
+			tY = tY == endY ? tY : tY + 1;
+			dY = dX == endX ? dY + 1 : dY;
+			dX = dX == endX ? dX : dX + 1;
 			fromUp = !fromUp;
 		}
 		System.out.println();
