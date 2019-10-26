@@ -67,6 +67,7 @@ public class Code_12_SmallerEqualBigger {
 		Node next = null; // save next node
 		// every node distributed to three lists
 		while (head != null) {
+			// 这两个变量保证每个接上的node,其next为null, 这样可以不用未来再对最后一个node的.next设为null了(省下了判断)
 			next = head.next;
 			head.next = null;
 			if (head.value < pivot) {
@@ -105,7 +106,7 @@ public class Code_12_SmallerEqualBigger {
 		if (eT != null) {
 			eT.next = bH;
 		}
-		return sH != null ? sH : eH != null ? eH : bH;
+		return sH != null ? sH :( eH != null ? eH : bH);
 	}
 
 	public static void printLinkedList(Node node) {
@@ -127,7 +128,7 @@ public class Code_12_SmallerEqualBigger {
 		head1.next.next.next.next.next.next = new Node(5);
 		printLinkedList(head1);
 		// head1 = listPartition1(head1, 4);
-		head1 = listPartition2(head1, 5);
+		head1 = listPartition2(head1, 3);
 		printLinkedList(head1);
 
 	}
