@@ -105,13 +105,17 @@ public class Code_07_IsBSTAndCBT {
 	}
 
 	public static void main(String[] args) {
-		Node head = new Node(4);
+//		Node head = new Node(4);
+//		head.left = new Node(2);
+//		head.right = new Node(6);
+//		head.left.left = new Node(1);
+//		head.left.right = new Node(3);
+//		head.right.left = new Node(5);
+		Node head = new Node(3);
 		head.left = new Node(2);
-		head.right = new Node(6);
+		head.right = new Node(5);
 		head.left.left = new Node(1);
-		head.left.right = new Node(3);
-		head.right.left = new Node(5);
-
+		head.left.right = new Node(4);
 		printTree(head);
 		System.out.println(isBST(head));
 		System.out.println(isCBT(head));

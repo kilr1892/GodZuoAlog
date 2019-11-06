@@ -136,6 +136,7 @@ public class Code04SerializeAndReconstructTree {
         return node;
     }
 
+    // 用了层次遍历
     private static Node reconByLevelString(String levelStr) {
         // 本质上就是用了两个容器, 一个装原来的string(便于加左右孩), 一个队列装指针的node(便于知道指针轮到了哪个)
         // 用于装原来的, 可以放到队列里, 稍微方便点
