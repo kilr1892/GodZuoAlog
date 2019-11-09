@@ -49,6 +49,8 @@ public class Code_02_RandomPool {
 		pool.insert("zuo");
 		pool.insert("cheng");
 		pool.insert("yun");
+		pool.delete("yun");
+
 		System.out.println(pool.getRandom());
 		System.out.println(pool.getRandom());
 		System.out.println(pool.getRandom());
