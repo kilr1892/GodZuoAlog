@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * .
+ * 并查集的一种实现.
  *
  * @author RichardLee
  * @version v1.0
