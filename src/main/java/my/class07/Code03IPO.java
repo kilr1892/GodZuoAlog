@@ -16,7 +16,7 @@ import java.util.PriorityQueue;
  * @author RichardLee
  * @version v1.0
  */
-public class IPO {
+public class Code03IPO {
     public static class Node {
         /** 利润 */
         private int p;
