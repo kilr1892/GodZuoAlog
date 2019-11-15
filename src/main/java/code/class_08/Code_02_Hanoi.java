@@ -1,6 +1,17 @@
 package code.class_08;
 
 public class Code_02_Hanoi {
+	// N : 1~N
+	public static void process(int N, String from, String to, String help) {
+		if (N == 1) {
+			System.out.println("Move 1 from" + from + "to" + to);
+		} else {
+			process(N - 1, from, help, to);
+			// 参数是from和to, 但是每次的参数是不同的(传参的不同)
+			System.out.println("Move " + N + " from " + from + " to " + to);
+			process(N - 1, help, to, from);
+		}
+	}
 
 	public static void hanoi(int n) {
 		if (n > 0) {
@@ -59,7 +70,8 @@ public class Code_02_Hanoi {
 
 	public static void main(String[] args) {
 		int n = 3;
-		hanoi(n);
+//		hanoi(n);
+		process(n,"开始","目标","帮助");
 	}
 
 }
